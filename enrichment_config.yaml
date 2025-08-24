@@ -1,0 +1,65 @@
+# Configuration file for enrichment analysis
+
+# Analysis parameters
+analysis:
+  organism: "Zebrafish"  # Options: Zebrafish, Human, Mouse, etc.
+  p_threshold: 0.05
+  top_terms_plot: 10
+  
+# Column mapping for XLSX files
+columns:
+  gene_column: "gene"
+  significance_column: "significance"
+  pvalue_column: "p_val_adj"
+  logfc_column: "avg_log2FC"
+
+# Significance categories (must match your data)
+categories:
+  upregulated: "Upregulated"
+  downregulated: "Downregulated"
+
+# Libraries to use for enrichment
+libraries:
+  zebrafish:
+    go:
+      - "GO_Biological_Process_2018"
+      - "GO_Molecular_Function_2018" 
+      - "GO_Cellular_Component_2018"
+    pathways:
+      - "WikiPathways_2018"
+      - "KEGG_2019"
+  
+  human:
+    go:
+      - "GO_Biological_Process_2021"
+      - "GO_Molecular_Function_2021"
+      - "GO_Cellular_Component_2021"
+    pathways:
+      - "WikiPathways_2019_Human"
+      - "KEGG_2021_Human"
+
+# Output settings
+output:
+  create_plots: true
+  save_excel: true
+  plot_dpi: 300
+  plot_format: "png"
+
+---
+
+# Example usage scenarios
+
+# 1. Single file analysis
+# python enrichment_pipeline.py --input "DEGs_Hypoxia_vs_Control.xlsx" --output "results_hypoxia"
+
+# 2. Batch analysis of multiple files
+# python enrichment_pipeline.py --input "deg_files/" --batch --output "batch_results"
+
+# 3. Custom column names
+# python enrichment_pipeline.py --input "my_degs.xlsx" --gene-col "GeneName" --significance-col "Direction"
+
+# 4. Different organism
+# python enrichment_pipeline.py --input "human_degs.xlsx" --organism "Human"
+
+# 5. Stricter p-value threshold
+# python enrichment_pipeline.py --input "degs.xlsx" --p-threshold 0.01
