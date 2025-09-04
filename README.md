@@ -1,4 +1,4 @@
-# GO and Pathway Enrichment Analysis Pipeline
+# EnrichmentAnalyzer: GO and Pathway Enrichment Analysis Pipeline
 
 A reproducible pipeline for performing Gene Ontology (GO) and pathway enrichment analysis on differentially expressed genes (DEGs) from XLSX files.
 
